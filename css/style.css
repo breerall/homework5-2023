@@ -1,0 +1,200 @@
+/*Default Styling*/
+/*Importing Poppins font from Google Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/*Styling Body*/
+body {
+  font-family: 'Poppins', serif; /*Poppins font with serif as a backup.*/
+  background-color: #f1f1f1; /*backup option in case second line is not available*/
+  background-image: url("images/concrete_seamless.png"); /* It should also use the image “concrete_seamless.png” as a background-image*/
+  /* display: flex;
+  flex-direction: column; */
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+
+/*Styling Header*/
+header {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* padding: 0 20px; */
+}
+
+/*Styling Navigation Links*/
+.nav_links {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+/*Styling links to have the same color even after being visited */
+.nav_item a, .nav_item a:visited {
+  color: #1103ED;
+}
+
+
+/*Styling for header elements that are direct children of a card class*/
+.card > header {
+  background: #288088;
+  border: 2px solid #45ADAD;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+/*Second selector to ensure proper radius*/
+div.card {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+
+/*Flex styling for the pricing section*/
+.pricing {
+  display: flex;
+  flex-direction: row; /*ensure same height*/
+  flex-wrap: wrap;/*avoids horizontal overflow*/
+  justify-content: center; /*horizontal centering*/
+  justify-items: center;
+  align-items: center; /*vertical centering*/
+}
+
+/*Flex Styling for Cards*/
+.card {
+  display: flex;
+  flex-basis: 450px; /*same width*/
+  flex-direction: column; /*display in a single column*/
+}
+
+/*Flex styling for Gallery*/
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*Gallery image styling*/
+.gallery img {
+  border: 10px solid #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+
+
+/*Media query for screen sizes larger than 900px*/
+@media (min-width: 900px) {
+  /*Header Styling for Horizontal Navigation*/
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /*pushes logo to the left and nav items to the right*/
+    align-items: center;
+  }
+  
+  /*Styling Navigation Links*/
+  .nav_links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /*Styling Pricing Section*/
+  .pricing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /*Same Width for all Cards*/
+  .card {
+    flex-basis: 275px; /*same width*/
+  }
+
+  /*Sticky Header*/
+  body > header:first-of-type { /*Selects first Header Type*/
+    position: sticky; /*Sticky Header*/
+    top: 0; /*sticks at the top */
+    z-index: 1;/*stays above all content*/
+  }
+}
+
+
+
+/*Print Page Styling*/
+/* @media print { */
+  @media (min-width: 900px){
+
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav > ul.nav_links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  body {
+    font-family: Arial, Helvetica; /*Updating Font to Arial, Helvetica*/
+    background-image: none; /*Removing Background Image*/
+  }
+
+  /*Styling for Pricing*/
+  .pricing {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+
+  /*Styling for Card*/
+  .card {
+    border: 2px solid #45ADDD;
+    flex-basis: 325px;
+  }
+  /*Removes Gallery from Display*/
+  #gallery, .gallery {
+    display: none;
+  }
+
+  /*Thumbs up character for cards*/
+  .card > ul > li:nth-child(2)::after { /*selecting the space after tghe 2nd listed element within unordered list in the card class*/
+    content: "\1F44D"; /*Appending a thumbsup*/
+  }
+}
+
+/*Logo Animation*/
+@keyframes logoAnimation {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+/*Applying animation to logo*/
+#logo {
+  animation: logoAnimation 5s forwards;
+}
+
+/*Prefers Reduced Motion*/
+@media (prefers-reduced-motion: reduce) {
+#logo {
+  animation: none;
+}
+}
