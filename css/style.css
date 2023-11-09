@@ -132,9 +132,7 @@ div.card {
 
 
 /*Print Page Styling*/
-/* @media print { */
-  @media (min-width: 900px){
-
+@media print {
   header {
     display: flex;
     flex-direction: column;
